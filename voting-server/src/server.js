@@ -8,6 +8,7 @@ export default (store) => {
     );
 
     io.on('connection', (socket) => {
-        socket.emit('state', state.getState().toJS())
-    })
+        socket.emit('state', state.getState().toJS());
+        socket.on('action', store.dispatch.bind(store));
+    });
 }
