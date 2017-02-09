@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Voting extends Component {
+export default class Voting extends Component {
     getPair() {
         const {pair} = this.props;
 
@@ -19,5 +19,3 @@ class Voting extends Component {
         );
     }
 }
-
-export default Voting;
