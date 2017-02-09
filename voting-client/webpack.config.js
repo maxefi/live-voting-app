@@ -29,6 +29,7 @@ module.exports = {
         compress: true,
         port: 8090
     },
+    devtool: 'cheap-module-eval-source-map',
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ]
