@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {List} from 'immutable';
+import {List, Map} from 'immutable';
 
 const pair = List.of('Trainspotting', '28 Days Later');
+const tally = Map({'Trainspotting': 5, '28 Days Later': 4});
 
 // This component does nothing except render its child components, expected to be given in as the children prop. This is
 // something that the react-router package does for us. It plugs in the component(s) defined for whatever the current
@@ -19,6 +20,6 @@ export default class App extends Component {
     render() {
         const {children} = this.props;
 
-        return React.cloneElement(children, {pair: pair});
+        return React.cloneElement(children, {pair: pair, tally: tally});
     }
 };
