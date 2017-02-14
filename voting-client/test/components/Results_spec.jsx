@@ -40,7 +40,7 @@ describe('Results', () => {
         const component = renderIntoDocument(
             <Results winner="Trainspotting" pair={['Trainspotting', '28 Days Later']} tally={Map()}/>
         );
-        const winner = ReactDOM.findDOMNode(component.ss.winner);
+        const winner = ReactDOM.findDOMNode(component, winner);
 
         expect(winner).to.be.ok;
         expect(winner.textContent).to.contain('Trainspotting');
