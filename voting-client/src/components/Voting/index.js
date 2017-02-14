@@ -1,3 +1,3 @@
-import Voting from './Voting.jsx';
+import {Voting, VotingContainer} from './Voting.jsx';
 
-export default Voting;
+export {Voting, VotingContainer};

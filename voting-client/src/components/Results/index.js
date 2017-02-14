@@ -1,3 +1,3 @@
-import Results from './Results.jsx';
+import {Results, ResultsContainer} from './Results.jsx';
 
-export default Results;
+export {Results, ResultsContainer};
