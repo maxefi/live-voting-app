@@ -8,24 +8,24 @@ import reducer from './reducer';
 import App from './components/App';
 import {VotingContainer} from './components/Voting';
 import {ResultsContainer} from './components/Results';
+import {setState} from './action_creators';
 
 const store = createStore(reducer);
 
-// deprecated mock for initial store dispatch
-// store.dispatch({
-//     type: 'SET_STATE',
-//     state: {
-//         vote: {
-//             pair: ['Sunshine', '28 Days Later'],
-//             tally: {Sunshine: 2}
-//         }
-//     }
-// });
+const localStateMock = {
+    vote: {
+        pair: ['Sunshine', '28 Days Later'],
+            tally: {Sunshine: 2}
+    }
+};
 
-const socket = io(`${location.protocol}//${location.hostname}:8090`);
-socket.on('state', state =>
-    store.dispatch({type: 'SET_STATE', state})
-);
+// deprecated mock for initial store dispatch
+store.dispatch(setState(localStateMock));
+
+// const socket = io(`${location.protocol}//${location.hostname}:8090`);
+// socket.on('state', state =>
+//     store.dispatch(setState(state))
+// );
 
 const routes = <Route component={App}>
     <Route path="/" component={VotingContainer}/>
