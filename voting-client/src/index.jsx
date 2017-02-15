@@ -11,11 +11,6 @@ import {ResultsContainer} from './components/Results';
 import {setState} from './action_creators';
 import remoteActionMiddleware from './remote_action_middleware';
 
-const createStoreWithMiddleware = applyMiddleware(
-    remoteActionMiddleware
-)(createStore);
-const store = createStoreWithMiddleware(reducer);
-
 // const localStateMock = {
 //     vote: {
 //         pair: ['Sunshine', '28 Days Later'],
@@ -30,6 +25,11 @@ const socket = io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', state =>
     store.dispatch(setState(state))
 );
+
+const createStoreWithMiddleware = applyMiddleware(
+    remoteActionMiddleware(socket)
+)(createStore);
+const store = createStoreWithMiddleware(reducer);
 
 const routes = <Route component={App}>
     <Route path="/" component={VotingContainer}/>
